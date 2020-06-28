@@ -6,8 +6,18 @@ namespace Composer\Autoload;
 
 class ComposerStaticInite21051816a89f510d042770b9cce9625
 {
-    public static $fallbackDirsPsr4 = array (
-        0 => __DIR__ . '/..' . '/ebuai/php-classes/src',
+    public static $prefixLengthsPsr4 = array (
+        'e' => 
+        array (
+            'ebuai\\' => 6,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'ebuai\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ebuai/php-classes/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -41,7 +51,8 @@ class ComposerStaticInite21051816a89f510d042770b9cce9625
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->fallbackDirsPsr4 = ComposerStaticInite21051816a89f510d042770b9cce9625::$fallbackDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite21051816a89f510d042770b9cce9625::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite21051816a89f510d042770b9cce9625::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInite21051816a89f510d042770b9cce9625::$prefixesPsr0;
             $loader->classMap = ComposerStaticInite21051816a89f510d042770b9cce9625::$classMap;
 
