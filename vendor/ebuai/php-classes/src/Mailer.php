@@ -7,7 +7,7 @@
 	class Mailer {
 
 		const USERNAME = 'acheroptonio.db32.facu@gmail.com';
-		const PASSWORD = 'Yqg65t6m';
+		const PASSWORD = '<?yourpasswordhere?>';
 		const NAME_FROM = 'ebuai';
 
 		private $mail;
