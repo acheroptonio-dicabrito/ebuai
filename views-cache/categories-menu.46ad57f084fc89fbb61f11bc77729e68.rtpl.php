@@ -1,1 +1,0 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><li><a href="/categories/6">Jamaica 10</a></li><li><a href="/categories/7">Motorola 9</a></li><li><a href="/categories/8">Semsunga 2020</a></li><li><a href="/categories/5">Unicórnio das Galaxias</a></li>
