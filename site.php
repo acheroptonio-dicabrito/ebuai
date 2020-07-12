@@ -3,6 +3,7 @@
 use \ebuai\Page;
 use \ebuai\Model\Product; 
 use \ebuai\Model\Category; 
+use \ebuai\Model\Cart; 
 
 //building page main
 $app->get('/', function() {
@@ -55,10 +56,20 @@ $app->get('/products/:desurl', function($desurl) {
 
 	$page = new Page();
 
-	$page->setTpl("product-detail", [
+	$page->setTpl('product-detail', [
 		'product'=>$product->getValues(),
 		'categories'=>$product->getCategories()
 	]);
+
+});
+
+$app->get('/cart', function() {
+
+	$cart = Cart::getFromSession();
+
+	$page = new Page();
+
+	$page->setTpl('cart');
 
 });
 

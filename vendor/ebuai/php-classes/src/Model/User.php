@@ -16,6 +16,53 @@ class User extends Model{
 	const SECRET = 'ebuaiPhp7_Secret';
 	const SECRET_IV = 'ebuaiPhp7_Secret_IV';
 
+	public static function getFromSession() {
+
+		$user = new User();
+
+		if (isset($_SESSION[User::SESSION]) && (int)$_SESSION[User::SESSION]['iduser']>0) {
+
+			$user->setData($_SESSION[User::SESSION]);
+
+		}
+
+			return $user;
+
+	}
+
+	public static function checkLogin($inadmin = true) {
+
+		if (
+			!isset($_SESSION[User::SESSION])
+			||
+			!$_SESSION[User::SESSION]
+			||
+			!(int)$_SESSION[User::SESSION]['iduser'] > 0
+		) {
+
+			//not logged in
+			return false;
+
+		} else {
+
+			if ($inadmin === true && (bool)$_SESSION[User::SESSION]['inadmin'] === true) {
+
+				return true;
+
+			}  else if ($inadmin === false) {
+
+				return false;
+
+			} else {
+
+				return false;
+
+			}
+
+		}
+
+	}
+
 	//verifying login
 	public static function login($login, $password) {
 
@@ -48,17 +95,7 @@ class User extends Model{
 	//verifying user session
 	public static function verifyLogin($inadmin = true) {
 
-		if (
-
-			!isset($_SESSION[User::SESSION])
-			||
-			!$_SESSION[User::SESSION]
-			||
-			!(int)$_SESSION[User::SESSION]['iduser'] > 0
-			||
-			(bool)$_SESSION[User::SESSION]['inadmin'] !== $inadmin
-
-		) {
+		if (User::checkLogin($inadmin)) {
 
 			header('Location: /admin/login');
 			exit;
